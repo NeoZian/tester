@@ -1,0 +1,383 @@
+base) salman@sync:~/Desktop/project$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/salman/Desktop/project/.git/
+(base) salman@sync:~/Desktop/project$ ls
+(base) salman@sync:~/Desktop/project$ ls -a
+.  ..  .git
+(base) salman@sync:~/Desktop/project$ ls .git
+branches  config  description  HEAD  hooks  info  objects  refs
+(base) salman@sync:~/Desktop/project$ touch names.txt
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	names.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+(base) salman@sync:~/Desktop/project$ git add names.txt
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   names.txt
+
+(base) salman@sync:~/Desktop/project$ git commit -m "names.txt file added"
+[master (root-commit) b28ca16] names.txt file added
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 names.txt
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+nothing to commit, working tree clean
+(base) salman@sync:~/Desktop/project$ cat names.txt
+md jewel
+salman khan
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) salman@sync:~/Desktop/project$ git add .
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   names.txt
+
+(base) salman@sync:~/Desktop/project$ git restore --staged names.txt
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) salman@sync:~/Desktop/project$ git add names.txt
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   names.txt
+
+(base) salman@sync:~/Desktop/project$ git commit -m "names.txt files modified"
+[master 553f02d] names.txt files modified
+ 1 file changed, 2 insertions(+)
+(base) salman@sync:~/Desktop/project$ git log
+commit 553f02df1f06053b354c36f68d87673eaa12f763 (HEAD -> master)
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:58:47 2023 +0600
+
+    names.txt files modified
+
+commit b28ca166504d704b6c4e875ee3e1cc2a5ed25344
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:54:23 2023 +0600
+
+    names.txt file added
+(base) salman@sync:~/Desktop/project$ rm -rf names.txt
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) salman@sync:~/Desktop/project$ git add .
+(base) salman@sync:~/Desktop/project$ git commit -m "names.txt file deleted"
+[master 8bc56a7] names.txt file deleted
+ 1 file changed, 2 deletions(-)
+ delete mode 100644 names.txt
+(base) salman@sync:~/Desktop/project$ git log
+commit 8bc56a755fa4979ab42be7b6a7fa509833180274 (HEAD -> master)
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Fri Jul 7 00:01:46 2023 +0600
+
+    names.txt file deleted
+
+commit 553f02df1f06053b354c36f68d87673eaa12f763
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:58:47 2023 +0600
+
+    names.txt files modified
+
+commit b28ca166504d704b6c4e875ee3e1cc2a5ed25344
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:54:23 2023 +0600
+
+    names.txt file added
+(base) salman@sync:~/Desktop/project$ git reset ^[[200~b28ca166504d704b6c4e875ee3e1cc2a5ed25344
+(base) salman@sync:~/Desktop/project$ git reset 200~b28ca166504d704b6c4e875ee3e1cc2a5ed25344
+fatal: ambiguous argument '200~b28ca166504d704b6c4e875ee3e1cc2a5ed25344': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+(base) salman@sync:~/Desktop/project$ git log
+commit 8bc56a755fa4979ab42be7b6a7fa509833180274 (HEAD -> master)
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Fri Jul 7 00:01:46 2023 +0600
+
+    names.txt file deleted
+
+commit 553f02df1f06053b354c36f68d87673eaa12f763
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:58:47 2023 +0600
+
+    names.txt files modified
+
+commit b28ca166504d704b6c4e875ee3e1cc2a5ed25344
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:54:23 2023 +0600
+
+    names.txt file added
+(base) salman@sync:~/Desktop/project$ git reset b28ca166504d704b6c4e875ee3e1cc2a5ed25344
+Unstaged changes after reset:
+D	names.txt
+(base) salman@sync:~/Desktop/project$ git log
+commit b28ca166504d704b6c4e875ee3e1cc2a5ed25344 (HEAD -> master)
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:54:23 2023 +0600
+
+    names.txt file added
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) salman@sync:~/Desktop/project$ git add .
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    names.txt
+
+(base) salman@sync:~/Desktop/project$ touch surnames.txt
+(base) salman@sync:~/Desktop/project$ git add .
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	renamed:    names.txt -> surnames.txt
+
+(base) salman@sync:~/Desktop/project$ touch houses.txt
+(base) salman@sync:~/Desktop/project$ git add .
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	renamed:    names.txt -> houses.txt
+	new file:   surnames.txt
+
+(base) salman@sync:~/Desktop/project$ git stash
+Saved working directory and index state WIP on master: b28ca16 names.txt file added
+(base) salman@sync:~/Desktop/project$ git ststus
+git: 'ststus' is not a git command. See 'git --help'.
+
+The most similar command is
+	status
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+nothing to commit, working tree clean
+(base) salman@sync:~/Desktop/project$ git log
+commit b28ca166504d704b6c4e875ee3e1cc2a5ed25344 (HEAD -> master)
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:54:23 2023 +0600
+
+    names.txt file added
+(base) salman@sync:~/Desktop/project$ cat names.txt 
+(base) salman@sync:~/Desktop/project$ git stash pop
+Removing names.txt
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   houses.txt
+	new file:   surnames.txt
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    names.txt
+
+Dropped refs/stash@{0} (180f670cacfbf8b5bec69567754126b6702cdc0e)
+(base) salman@sync:~/Desktop/project$ git add .
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	renamed:    names.txt -> houses.txt
+	new file:   surnames.txt
+
+(base) salman@sync:~/Desktop/project$ git stash
+Saved working directory and index state WIP on master: b28ca16 names.txt file added
+(base) salman@sync:~/Desktop/project$ git stash clean
+fatal: unknown subcommand: clean
+
+usage: git stash list [<options>]
+   or: git stash show [<options>] [<stash>]
+   or: git stash drop [-q|--quiet] [<stash>]
+   or: git stash ( pop | apply ) [--index] [-q|--quiet] [<stash>]
+   or: git stash branch <branchname> [<stash>]
+   or: git stash clear
+   or: git stash [push [-p|--patch] [-k|--[no-]keep-index] [-q|--quiet]
+                 [-u|--include-untracked] [-a|--all] [-m|--message <message>]
+                 [--pathspec-from-file=<file> [--pathspec-file-nul]]
+                 [--] [<pathspec>...]]
+   or: git stash save [-p|--patch] [-k|--[no-]keep-index] [-q|--quiet]
+                 [-u|--include-untracked] [-a|--all] [<message>]
+
+(base) salman@sync:~/Desktop/project$ git stash clear
+(base) salman@sync:~/Desktop/project$ git log
+commit b28ca166504d704b6c4e875ee3e1cc2a5ed25344 (HEAD -> master)
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:54:23 2023 +0600
+
+    names.txt file added
+(base) salman@sync:~/Desktop/project$ git remote add origin https://github.com/NeoZian/tester.git
+(base) salman@sync:~/Desktop/project$ git remote -v
+origin	https://github.com/NeoZian/tester.git (fetch)
+origin	https://github.com/NeoZian/tester.git (push)
+(base) salman@sync:~/Desktop/project$ git push origin master
+Username for 'https://github.com': 123123.sh14@gmail.com
+Password for 'https://123123.sh14@gmail.com@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/NeoZian/tester.git/'
+(base) salman@sync:~/Desktop/project$ git push origin master
+Username for 'https://github.com': 123123.sh14@gmail.com
+Password for 'https://123123.sh14@gmail.com@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/NeoZian/tester.git/'
+(base) salman@sync:~/Desktop/project$ git push origin master
+Username for 'https://github.com': NeoZian
+Password for 'https://NeoZian@github.com': 
+(base) salman@sync:~/Desktop/project$ git push origin master
+Username for 'https://github.com': NeoZian
+Password for 'https://NeoZian@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/NeoZian/tester.git/'
+(base) salman@sync:~/Desktop/project$ git push origin master
+Username for 'https://github.com': 123123.sh14@gmail.com
+Password for 'https://123123.sh14@gmail.com@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/NeoZian/tester.git/'
+(base) salman@sync:~/Desktop/project$ git push origin master
+Username for 'https://github.com': 123123.sh14@gmail.com
+Password for 'https://123123.sh14@gmail.com@github.com': 
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 220 bytes | 220.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/NeoZian/tester.git
+ * [new branch]      master -> master
+(base) salman@sync:~/Desktop/project$ touch hotel.txt
+(base) salman@sync:~/Desktop/project$ git add .
+(base) salman@sync:~/Desktop/project$ git commit -m "hotel.txt added"
+[master f608de7] hotel.txt added
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 hotel.txt
+(base) salman@sync:~/Desktop/project$ touch rollno.txt
+(base) salman@sync:~/Desktop/project$ git add .
+(base) salman@sync:~/Desktop/project$ git commit -m "rolls added"
+[master 740100e] rolls added
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 rollno.txt
+(base) salman@sync:~/Desktop/project$ vi rollno.txt 
+(base) salman@sync:~/Desktop/project$ git add .
+(base) salman@sync:~/Desktop/project$ git commit -m "rolls modified"
+[master 181ba8d] rolls modified
+ 1 file changed, 2 insertions(+)
+(base) salman@sync:~/Desktop/project$ git log
+commit 181ba8d825959e1e282953f83a4801fafd972364 (HEAD -> master)
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Fri Jul 7 02:11:24 2023 +0600
+
+    rolls modified
+
+commit 740100e4f7b29e4540779bb7276ca27a443a4b82
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Fri Jul 7 02:07:25 2023 +0600
+
+    rolls added
+
+commit f608de734d83f76078ebc35584eb585c1698a72c
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Fri Jul 7 02:06:54 2023 +0600
+
+    hotel.txt added
+
+commit b28ca166504d704b6c4e875ee3e1cc2a5ed25344 (origin/master)
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:54:23 2023 +0600
+
+    names.txt file added
+(base) salman@sync:~/Desktop/project$ git remote -v
+origin	https://github.com/NeoZian/tester.git (fetch)
+origin	https://github.com/NeoZian/tester.git (push)
+(base) salman@sync:~/Desktop/project$ git status
+On branch master
+nothing to commit, working tree clean
+(base) salman@sync:~/Desktop/project$ ls
+hotel.txt  names.txt  rollno.txt
+(base) salman@sync:~/Desktop/project$ ls
+hotel.txt  names.txt  rollno.txt
+(base) salman@sync:~/Desktop/project$ git push origin master
+Username for 'https://github.com': 123123.sh14@gmail.com
+Password for 'https://123123.sh14@gmail.com@github.com': 
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 6 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 662 bytes | 662.00 KiB/s, done.
+Total 7 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), done.
+To https://github.com/NeoZian/tester.git
+   b28ca16..181ba8d  master -> master
+(base) salman@sync:~/Desktop/project$ git log
+commit 181ba8d825959e1e282953f83a4801fafd972364 (HEAD -> master, origin/master)
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Fri Jul 7 02:11:24 2023 +0600
+
+    rolls modified
+
+commit 740100e4f7b29e4540779bb7276ca27a443a4b82
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Fri Jul 7 02:07:25 2023 +0600
+
+    rolls added
+
+commit f608de734d83f76078ebc35584eb585c1698a72c
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Fri Jul 7 02:06:54 2023 +0600
+
+    hotel.txt added
+
+commit b28ca166504d704b6c4e875ee3e1cc2a5ed25344
+Author: NeoZian <123123.sh14@gmail.com>
+Date:   Thu Jul 6 23:54:23 2023 +0600
+
+    names.txt file added
+(base) salman@sync:~/Desktop/project$ 
+
